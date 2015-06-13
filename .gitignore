@@ -1,0 +1,10 @@
+# Galaxy Roles #
+################
+
+# Build Files #
+tmp/*
+
+# Local Development #
+#####################
+*.vagrant/
+*.swp
