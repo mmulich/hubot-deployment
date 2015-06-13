@@ -19,5 +19,10 @@
 
 - name: install hubot
   hosts: all
+  sudo: yes
+  gather_facts: yes
   roles:
-    - role: brainshumate.hubot
+    - role: brianshumate.hubot
+      hubot_adapter: jabbr
+      hubot_ower: "OpenStax"
+      # hubot_node_packages:
