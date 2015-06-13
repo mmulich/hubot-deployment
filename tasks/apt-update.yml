@@ -1,0 +1,5 @@
+---
+
+- name: update apt-cache
+  sudo: yes
+  apt: update_cache=yes
