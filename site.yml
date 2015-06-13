@@ -16,3 +16,8 @@
       items:
         - acl
         - build-essential
+
+- name: install hubot
+  hosts: all
+  roles:
+    - role: brainshumate.hubot

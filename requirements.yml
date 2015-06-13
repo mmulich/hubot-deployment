@@ -1,0 +1,10 @@
+---
+# Use ``ansible-galaxy install --roles-path=./roles -r requirements.yml``
+# See also http://docs.ansible.com/galaxy.html#advanced-control-over-role-requirements-files
+
+# PIN to a SPECIFIC VERSION for security reasons. And before you upgrade
+# to the next version, please be sure to look through the changelog
+# for anything malicious or suspicious.
+
+- name: brianshumate.hubot
+  src: https://github.com/brianshumate/ansible-hubot.git
