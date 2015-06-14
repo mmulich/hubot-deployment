@@ -35,3 +35,35 @@
         - nodepie
         - soupselect
         - hubot-youtube
+        - lodash
+        - moment
+        - chrono-node
+      hubot_custom_scripts:
+        - achievement_unlocked.coffee
+        - ackbar.coffee
+        - applause.coffee
+        - ascii.coffee
+        - base64.coffee
+        - bees.coffee
+        - botsnack.coffee
+        - cat.coffee
+        - cleverbot.coffee
+        - coin.coffee
+        - dealwithit.coffee
+        - decide.coffee
+        - fortune.coffee
+        - github-status.coffee
+        - grumpycat.coffee
+        - hackernews.coffee
+        - megusta.coffee
+        - ping.coffee
+        - redis-brain
+        - reddit
+        - reddit-jokes.coffee
+        - reddit-random-top.coffee
+        - remind.coffee
+        - stallman.coffee
+        - twss
+        - wunderground.coffee
+        - xkcd.coffee
+        - zombies.coffee
