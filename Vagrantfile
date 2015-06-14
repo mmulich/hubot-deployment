@@ -18,6 +18,7 @@ Vagrant.configure(2) do |config|
     ansible.playbook = "#{ENV['playbook'] || 'site.yml'}"
     ansible.inventory_path = "#{ENV['inventory'] || 'vagrant-inventory'}"
     ansible.limit = 'all'  # The special 'all' group name.
+    ansible.ask_vault_pass = true
     # ansible.verbose = 'vvv'
   end
 end
