@@ -23,7 +23,7 @@
   gather_facts: yes
   roles:
     - role: brianshumate.hubot
-      hubot_adapter: jabbr
+      hubot_adapter: xmpp
       hubot_ower: "OpenStax"
       hubot_node_packages:
         - cheerio
