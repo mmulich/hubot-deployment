@@ -25,4 +25,13 @@
     - role: brianshumate.hubot
       hubot_adapter: jabbr
       hubot_ower: "OpenStax"
-      # hubot_node_packages:
+      hubot_node_packages:
+        - cheerio
+        - clark
+        - cleverbot-node
+        - htmlparser
+        - hubot-calculator
+        - hubot-hipchat-emoticons
+        - nodepie
+        - soupselect
+        - hubot-youtube
