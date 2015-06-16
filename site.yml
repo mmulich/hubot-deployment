@@ -38,6 +38,7 @@
         - lodash
         - moment
         - chrono-node
+        - gitio2
       hubot_custom_scripts:
         - achievement_unlocked.coffee
         - ackbar.coffee
@@ -52,6 +53,7 @@
         - dealwithit.coffee
         - decide.coffee
         - fortune.coffee
+        - github-commits.coffee
         - github-status.coffee
         - grumpycat.coffee
         - hackernews.coffee
