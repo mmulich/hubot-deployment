@@ -28,6 +28,7 @@
       hubot_node_packages:
         - cheerio
         - clark
+        - date-utils
         - htmlparser
         - hubot-calculator
         - soupselect
@@ -35,12 +36,21 @@
         - moment
         - chrono-node
         - gitio2
+        - githubot
+        - underscore
+        - underscore.string
       hubot_custom_scripts:
         - base64.coffee
         - botsnack.coffee
         - coin.coffee
         - decide.coffee
+        - github-activity.coffee
+        - github-commiters.coffee
         - github-commits.coffee
+        - github-issues.coffee
+        - github-pull-request-notifier.coffee
+        - github-pulls.coffee
+        - github-search.coffee
         - github-status.coffee
         - remind.coffee
     - role: fixup_hubot_install
