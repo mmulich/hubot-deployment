@@ -1,0 +1,7 @@
+---
+
+- name: Install custom scripts
+  sudo: False
+  copy: "src=scripts/ dest={{ hubot_dir }}/scripts owner={{ hubot_admin }} mode=0644"
+  notify:
+    - restart hubot
