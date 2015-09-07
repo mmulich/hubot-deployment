@@ -24,7 +24,7 @@
   roles:
     - role: brianshumate.hubot
       hubot_adapter: xmpp
-      hubot_ower: "OpenStax"
+      hubot_ower: 'OpenStax'
       hubot_node_packages:
         - cheerio
         - clark
@@ -55,3 +55,5 @@
         - remind.coffee
     - role: fixup_hubot_install
     - role: custom_hubot_scripts
+      hubot_tz: 'America/Chicago'
+      hubot_adapter: xmpp
