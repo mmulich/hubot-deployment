@@ -83,3 +83,46 @@ module.exports = (robot) ->
   room = process.env.HUBOT_GITHUB_LIST_PR_ROOM
   pullRequestLister = new PullRequestLister robot, time, repos, room
   pullRequestLister.run()
+
+
+# # Fake stuff
+# 
+# fs = require 'fs'
+# http = require 'https'
+# url = require 'url'
+# 
+# 
+# process = {
+#   env: {
+#     HUBOT_GITHUB_LIST_PR_REPOS: 'Connexions/cnx-archive',
+#     HUBOT_GITHUB_LIST_PR_TIME: '09:25',
+#     HUBOT_GITHUB_LIST_PR_ROOM: 'sprint@conference.jabber.cnx.org'
+#   }
+# }
+# 
+# 
+# # Replace "@github = require('github')(@robot)" with "@github = new FakeGithub"
+# class FakeGithub
+#   get: (uri, callback) ->
+#     console.log "FakeGithub.get #{uri}"
+#     urlOptions = url.parse(uri)
+#     urlOptions['headers'] = {'user-agent': 'node.js'}
+#     http.get urlOptions, (response) ->
+#       str = ''
+#       response.on 'data', (chunk) ->
+#         str += chunk
+#       response.on 'end', ->
+#         callback JSON.parse(str)
+# 
+# 
+# class FakeRobot
+#   messageRoom: (room, message) ->
+#     console.log "messageRoom #{room} #{message}"
+# 
+# 
+# PullRequestLister.prototype.run = ->
+#     time = moment().hour(@hour).minute(@minute).second(0)
+#     setTimeout this.printPullRequests, 0
+# 
+# 
+# module.exports(new FakeRobot)
