@@ -19,29 +19,44 @@ moment = require('moment')
 class PullRequestLister
   constructor: (@robot, @time, @repos, @room) ->
     @github = require('githubot')(@robot)
-    unless (@url_api_base = process.env.HUBOT_GITHUB_API)?
-      @url_api_base = 'https://api.github.com'
+    unless (@urlApiBase = process.env.HUBOT_GITHUB_API)?
+      @urlApiBase = 'https://api.github.com'
     [@hour, @minute] = @time.split ':'
 
   calculateTimeout: (time) ->
     now = (new Date).getTime()
     time.valueOf() - now
 
-  getPullRequests: (repo, indentation, printMessage) ->
-    @github.get "#{@url_api_base}/repos/#{repo}/pulls", (pulls) ->
-      if pulls.length > 0
-        printMessage "Pull requests for #{repo}"
+  getPullRequest: (repo, pull, indentation, callback) ->
+    createdAt = moment(pull.created_at).fromNow()
+    updatedAt = moment(pull.updated_at).fromNow()
+    callback "#{indentation}- \"#{pull.title}\" by #{pull.user.login} (created #{createdAt}, updated #{updatedAt}): #{pull.html_url}"
+
+  getPullRequests: (repo, indentation, callback) ->
+    @github.get "#{@urlApiBase}/repos/#{repo}/pulls", (pulls) =>
+      lines = []
+      lines.push "#{pulls.length} pull request(s) for #{repo}"
+      if pulls.length == 0
+        callback(lines.join '\n')
+
       for pull in pulls
-        createdAt = moment(pull.created_at).fromNow()
-        updatedAt = moment(pull.updated_at).fromNow()
-        printMessage "#{indentation}\"#{pull.title}\" by #{pull.user.login} (created #{createdAt}, updated #{updatedAt}): #{pull.html_url}"
+        this.getPullRequest repo, pull, "#{indentation}  ", (output) ->
+          lines.push output
+          if lines.length - 1 == pulls.length
+            callback(lines.join '\n')
 
   listPullRequests: (printMessage) ->
     lines = []
-    printMessage '********************************************************************************'
+    i = 1
     for repo in @repos
-      this.getPullRequests(repo, '  ', printMessage)
-    printMessage '********************************************************************************'
+      this.getPullRequests(repo, '  ', (msg) =>
+        lines.push msg
+        if i++ == @repos.length
+          printMessage '********************************************************************************'
+          for line in lines
+            printMessage line
+          printMessage '********************************************************************************'
+      )
 
   printPullRequests: =>
     dayOfWeek = moment().day()
