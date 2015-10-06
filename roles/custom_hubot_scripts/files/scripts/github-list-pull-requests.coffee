@@ -27,10 +27,42 @@ class PullRequestLister
     now = (new Date).getTime()
     time.valueOf() - now
 
+  getPullRequestComments: (repo, number, indentation, callback) ->
+    @github.get "#{@urlApiBase}/repos/#{repo}/issues/#{number}/comments", (comments) ->
+      # if second to last comment more than 8 days old and
+      #    last comment less than 8 days old
+      # display last comment
+      previous = comments[comments.length - 2]
+      last = comments[comments.length - 1]
+
+      if not last
+        return callback()
+
+      # 8 days in milliseconds
+      oneDay = 24 * 60 * 60 * 1000
+      eightDays = 8 * oneDay
+
+      lastUpdatedAt = moment last.updated_at
+      msg = "#{indentation}**latest comment** <#{last.user.login}> #{last.body}"
+
+      if moment() - lastUpdatedAt < eightDays
+        if previous
+          previousCreatedAt = moment previous.created_at
+          if moment() - previousCreatedAt > eightDays
+            return callback msg
+        else
+          return callback msg
+      return callback()
+
   getPullRequest: (repo, pull, indentation, callback) ->
     createdAt = moment(pull.created_at).fromNow()
     updatedAt = moment(pull.updated_at).fromNow()
-    callback "#{indentation}- \"#{pull.title}\" by #{pull.user.login} (created #{createdAt}, updated #{updatedAt}): #{pull.html_url}"
+    lines = []
+    lines.push "#{indentation}- \"#{pull.title}\" by #{pull.user.login} (created #{createdAt}, updated #{updatedAt}): #{pull.html_url}"
+    this.getPullRequestComments repo, pull.number, "#{indentation}  ", (output) ->
+      if output?
+        lines.push output
+      callback(lines.join '\n')
 
   getPullRequests: (repo, indentation, callback) ->
     @github.get "#{@urlApiBase}/repos/#{repo}/pulls", (pulls) =>
