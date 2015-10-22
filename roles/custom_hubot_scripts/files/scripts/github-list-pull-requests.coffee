@@ -28,6 +28,7 @@ class PullRequestLister
     time.valueOf() - now
 
   getPullRequestComments: (repo, number, indentation, callback) ->
+    console.log "getPullRequestComments #{repo}"
     @github.get "#{@urlApiBase}/repos/#{repo}/issues/#{number}/comments", (comments) ->
       # if second to last comment more than 8 days old and
       #    last comment less than 8 days old
@@ -65,6 +66,7 @@ class PullRequestLister
       callback(lines.join '\n')
 
   getPullRequests: (repo, indentation, callback) ->
+    console.log "getPullRequests #{repo}"
     @github.get "#{@urlApiBase}/repos/#{repo}/pulls", (pulls) =>
       lines = []
       lines.push "#{pulls.length} pull request(s) for #{repo}"
@@ -76,8 +78,11 @@ class PullRequestLister
           lines.push output
           if lines.length - 1 == pulls.length
             callback(lines.join '\n')
+          else
+            console.log "lines.length: #{lines.length} pulls.length: #{pulls.length}"
 
   listPullRequests: (printMessage) ->
+    console.log "listPullRequests"
     lines = []
     i = 1
     for repo in @repos
@@ -88,6 +93,8 @@ class PullRequestLister
           for line in lines
             printMessage line
           printMessage '********************************************************************************'
+        else
+          console.log "i: #{i} repo: #{repo} repos.length: #{@repos.length}"
       )
 
   printPullRequests: =>
@@ -95,6 +102,7 @@ class PullRequestLister
     if dayOfWeek >= 1 and dayOfWeek <= 5
       # only do this between monday and friday
       this.listPullRequests (message) =>
+        console.log message
         @robot.messageRoom @room, message
 
     # set the next timeout
