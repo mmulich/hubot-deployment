@@ -44,7 +44,7 @@ class PullRequestLister
       eightDays = 8 * oneDay
 
       lastUpdatedAt = moment last.updated_at
-      msg = "#{indentation}**latest comment** <#{last.user.login}> #{last.body}"
+      msg = "#{indentation}*comment* <#{last.user.login}> #{last.body}"
 
       if moment() - lastUpdatedAt < eightDays
         if previous
@@ -69,14 +69,13 @@ class PullRequestLister
     console.log "getPullRequests #{repo}"
     @github.get "#{@urlApiBase}/repos/#{repo}/pulls", (pulls) =>
       lines = []
-      lines.push "#{pulls.length} pull request(s) for #{repo}"
       if pulls.length == 0
-        callback(lines.join '\n')
+        callback()
 
       for pull in pulls
-        this.getPullRequest repo, pull, "#{indentation}  ", (output) ->
+        this.getPullRequest repo, pull, indentation, (output) ->
           lines.push output
-          if lines.length - 1 == pulls.length
+          if lines.length == pulls.length
             callback(lines.join '\n')
           else
             console.log "lines.length: #{lines.length} pulls.length: #{pulls.length}"
@@ -86,8 +85,9 @@ class PullRequestLister
     lines = []
     i = 1
     for repo in @repos
-      this.getPullRequests(repo, '  ', (msg) =>
-        lines.push msg
+      this.getPullRequests(repo, '', (msg) =>
+        if msg?
+          lines.push msg
         if i++ == @repos.length
           printMessage '********************************************************************************'
           for line in lines
