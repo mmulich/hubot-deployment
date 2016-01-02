@@ -53,7 +53,6 @@
         - github-search.coffee
         - github-status.coffee
         - remind.coffee
-    - role: fixup_hubot_install
     - role: custom_hubot_scripts
       hubot_tz: 'America/Chicago'
       hubot_adapter: xmpp
