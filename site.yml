@@ -39,7 +39,7 @@
         - githubot
         - underscore
         - underscore.string
-      hubot_custom_scripts:
+      hubot_scripts:
         - base64.coffee
         - botsnack.coffee
         - coin.coffee
