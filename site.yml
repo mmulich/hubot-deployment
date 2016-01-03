@@ -23,7 +23,7 @@
   gather_facts: yes
   roles:
     - role: brianshumate.hubot
-      hubot_adapter: xmpp
+      hubot_adapter: slack
       hubot_ower: 'OpenStax'
       hubot_node_packages:
         - cheerio
@@ -55,4 +55,4 @@
         - remind.coffee
     - role: custom_hubot_scripts
       hubot_tz: 'America/Chicago'
-      hubot_adapter: xmpp
+      hubot_adapter: slack
