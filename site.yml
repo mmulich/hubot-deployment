@@ -23,36 +23,6 @@
   gather_facts: yes
   roles:
     - role: brianshumate.hubot
-      hubot_adapter: slack
-      hubot_ower: 'OpenStax'
-      hubot_node_packages:
-        - cheerio
-        - clark
-        - date-utils
-        - htmlparser
-        - hubot-calculator
-        - soupselect
-        - lodash
-        - moment
-        - chrono-node
-        - gitio2
-        - githubot
-        - underscore
-        - underscore.string
-      hubot_scripts:
-        - base64.coffee
-        - botsnack.coffee
-        - coin.coffee
-        - decide.coffee
-        - github-activity.coffee
-        - github-commiters.coffee
-        - github-commits.coffee
-        - github-issues.coffee
-        #- github-pull-request-notifier.coffee
-        - github-pulls.coffee
-        - github-search.coffee
-        - github-status.coffee
-        - remind.coffee
     - role: custom_hubot_scripts
       hubot_tz: 'America/Chicago'
       hubot_adapter: slack

@@ -69,22 +69,26 @@ hubot_admin: vagrant
 
 hubot_identity: hubot
 
-hubot_owner: "'Stephie Andretti <stephie@example.com>'"
+hubot_owner: "'OpenStax'"
 
 hubot_description: "'A helpful chat robot'"
 
 hubot_node_packages:
   - cheerio
   - clark
+  - date-utils
   - htmlparser
   - hubot-calculator
-  - hubot-hipchat-emoticons
   - hubot-{{ hubot_adapter }}
   - hubot-scripts
-  - hubot-youtube
-  - nodepie
   - soupselect
-  - textspark
+  - lodash
+  - moment
+  - chrono-node
+  - gitio2
+  - githubot
+  - underscore
+  - underscore.string
 
 #############################################################################
 #
@@ -95,7 +99,7 @@ hubot_node_packages:
 hubot_external_scripts:
   - hubot-redis-brain
   - hubot-help
-  # - hubot-calculator
+  - hubot-calculator
   # - hubot-diagnostics
   # - hubot-hipchat-emoticons
   # - hubot-google-images
@@ -131,38 +135,23 @@ hubot_external_scripts:
 #
 #############################################################################
 
-# hubot_scripts:
-  - achievement_unlocked.coffee
-  - ackbar.coffee
-  - applause.coffee
-  - ascii.coffee
+hubot_scripts:
   - base64.coffee
-  - bees.coffee
   - botsnack.coffee
-  - cat.coffee
-  - cleverbot.coffee
   - coin.coffee
-  - dealwithit.coffee
   - decide.coffee
-  - fortune.coffee
-  # - github-status.coffee
-  - grumpycat.coffee
-  - hackernews.coffee
-  - megusta.coffee
-  - ping.coffee
-  - redis-brain
-  - reddit
-  - reddit-jokes.coffee
-  - reddit-random-top.coffee
+  - github-activity.coffee
+  - github-commiters.coffee
+  - github-commits.coffee
+  - github-issues.coffee
+  #- github-pull-request-notifier.coffee
+  - github-pulls.coffee
+  - github-search.coffee
+  - github-status.coffee
   - remind.coffee
-  - stallman.coffee
-  - twss
-  # - wunderground.coffee
-  - xkcd.coffee
-  - zombies.coffee
 
 # EPEL repository URL
-epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+#epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
 
 # EPEL repository GPG key
-epel_repo_gpg_key: "/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
+#epel_repo_gpg_key: "/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
