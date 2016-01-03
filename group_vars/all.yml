@@ -50,6 +50,11 @@ hubot_env:
    # Slack variables
    HUBOT_SLACK_TOKEN: "FIXME"
 
+   # Github stuff
+   HUBOT_GITHUB_USER: "Connexions"
+   HUBOT_GITHUB_LIST_PR_REPOS: "Connexions/webview,Connexions/cnx-archive,Connexions/cnx-authoring,Connexions/cnx-publishing,Connexions/cnx-epub,Connexions/cnx-publishing-builds,Connexions/cnx-cnxml-transforms,Connexions/cnx-transforms,Connexions/cnx-mathml2svg"
+   HUBOT_GITHUB_LIST_PR_TIME: "09:25"
+
    # Weather stuff
    # HUBOT_WUNDERGROUND_API_KEY: "FIXME" # Replace with Wunderground API key
 
