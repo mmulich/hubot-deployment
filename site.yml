@@ -21,6 +21,8 @@
   hosts: all
   sudo: yes
   gather_facts: yes
+  vars_files:
+    - "vars/adapter.yml"
   roles:
     - role: brianshumate.hubot
     - role: custom_hubot_scripts
