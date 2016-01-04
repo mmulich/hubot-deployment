@@ -3,7 +3,7 @@ RUN apt-get update && apt-get install -y git python-virtualenv python-dev
 RUN useradd -m hubot
 RUN git clone https://github.com/karenc/hubot-deployment.git /hubot-deployment
 COPY vars/adapter.yml /hubot-deployment/vars/
-RUN if [ -n "`grep '$ANSIBLE_VAULT;' /hubot-deployment/vars/adapter.yml`" ]; then echo "Need to decrypt vars/adapter.yml: ./bin/ansible-vault decrypt vars/adapter.yml"; exit 1; fi
+RUN if [ -n "`grep '$ANSIBLE_VAULT;' /hubot-deployment/vars/adapter.yml`" ]; then echo "Need to decrypt vars/adapter.yml: ansible-vault decrypt vars/adapter.yml"; exit 1; fi
 WORKDIR /hubot-deployment
 RUN virtualenv .
 RUN ./bin/pip install ansible
