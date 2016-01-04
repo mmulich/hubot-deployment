@@ -27,4 +27,3 @@
     - role: brianshumate.hubot
     - role: custom_hubot_scripts
       hubot_tz: 'America/Chicago'
-      hubot_adapter: slack
