@@ -23,6 +23,9 @@
   gather_facts: yes
   vars_files:
     - "vars/adapter.yml"
+  vars:
+    # merge hubot_env in group_vars/all.yml and vars/adapter.yml
+    hubot_env: "{{ default_hubot_env.update(adapter_hubot_env) }}{{ default_hubot_env }}"
   roles:
     - role: brianshumate.hubot
     - role: custom_hubot_scripts

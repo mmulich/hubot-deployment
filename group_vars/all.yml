@@ -33,7 +33,7 @@ hubot_all_dirs:
   - "{{ hubot_nvm_dir }}"
   - "/home/{{ hubot_admin }}/.npm"
 
-hubot_env:
+default_hubot_env:
    # General Hubot stuff
    # HUBOT_AUTH_ADMIN: "FIXME"           # Replace with hubot admin username
    HUBOT_LOGLEVEL: "info"
