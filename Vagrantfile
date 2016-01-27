@@ -9,6 +9,7 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |v|
     v.memory = 2048
   end
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
 
   # Provision the machine using an ansible playbook.
   # See documenation at:

@@ -1,0 +1,6 @@
+redis:
+    image: redis:latest
+hubot:
+    build: .
+    links:
+        - redis

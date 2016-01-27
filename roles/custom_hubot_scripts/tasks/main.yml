@@ -1,0 +1,11 @@
+---
+
+- name: Install Hubot start script
+  sudo: False
+  template: "src=start-hubot.sh.j2 dest={{ hubot_dir }}/bin/start-hubot mode=0744"
+
+- name: Install custom scripts
+  sudo: False
+  copy: "src=scripts/ dest={{ hubot_dir }}/scripts owner={{ hubot_admin }} mode=0644"
+  notify:
+    - restart hubot

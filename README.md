@@ -20,6 +20,18 @@ To use these on your host machine, add the following to your ``/etc/hosts`` file
 192.168.11.22    hubot.local
 ```
 
+### Docker install
+
+1. Install ``docker`` and ``docker-compose``.
+
+2. Decrypt ``vars/adapter.yml``:
+
+   ```
+ansible-vault decrypt vars/adapter.yml
+```
+
+3. Run ``docker-compose up -d``.
+
 ## Playbook layout (directory structure)
 
 This project attempts to follow a similar file and directory laid out documented in the Ansible community [best practices](http://docs.ansible.com/playbooks_best_practices.html#directory-layout). Any deviations from the structure are contained in the following documentation.
